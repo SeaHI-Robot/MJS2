@@ -1,0 +1,57 @@
+TRON1:
+  policy_files:
+    uneven_task: "policy_uneven.pt"
+
+  joint_names:
+    - "abad_L_Joint"
+    - "hip_L_Joint"
+    - "knee_L_Joint"
+    - "abad_R_Joint"
+    - "hip_R_Joint"
+    - "knee_R_Joint"
+
+  init_state:
+    # target angles [rad] when action = 0.0
+    default_joint_angle:
+      abad_L_Joint: 0.0
+      hip_L_Joint: 0.0
+      knee_L_Joint: 0.0
+
+      abad_R_Joint: 0.0
+      hip_R_Joint: 0.0
+      knee_R_Joint: 0.0
+    init_base_height: 0.65
+    init_commands: [0.8, 0.0, 0.0]
+
+  control:
+    # PD Drive parameters:
+    stiffness: 40.0
+    damping: 1.5
+    action_scale: 0.5
+    decimation: 10
+    torque_limit: 60
+    gravity: 9.81
+
+  normalization:
+    clip_scales:
+      clip_obs: 100.
+      clip_action: 100.
+    obs_scales:
+      lin_vel: 2.0
+      ang_vel: 0.25
+      dof_pos: 1.0
+      dof_vel: 0.05
+
+  size:
+    num_joint: 6
+    num_action: 6
+    num_obs: 27
+    num_user_cmd: 3
+
+  stand_mode:
+    stand_duration: 1.0
+
+  imu_orientation_offset:
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0

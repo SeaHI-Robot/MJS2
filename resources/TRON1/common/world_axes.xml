@@ -1,0 +1,17 @@
+<mujoco>
+
+    <worldbody>
+        <body name="world_axes" pos="0 0 0.01">
+            <!-- x axis -->
+                <geom type="cylinder" pos="0.25 0 0" euler="0 1.578 0" size="0.01 0.25" rgba="1 0 0 0.2" contype="0" conaffinity="0"/>
+
+            <!-- y axis -->
+                <geom type="cylinder" pos="0 0.25 0" euler="1.578 0 0" size="0.01 0.25" rgba="0 1 0 0.2" contype="0" conaffinity="0"/>
+
+            <!-- z axis -->
+                <geom type="cylinder" pos="0 0 0.25" euler="0 0 0" size="0.01 0.25" rgba="0 0 1 0.2" contype="0" conaffinity="0"/>
+            </body>
+
+    </worldbody>
+
+ </mujoco>
