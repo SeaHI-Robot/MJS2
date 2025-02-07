@@ -1,0 +1,85 @@
+A1_himloco:
+  policy_files:
+    uneven_task: "policy_uneven_himloco.pt"
+
+  joint_names:
+    # not used, just help to remind the joint sequence
+    # ===== Front Right =====
+    - "FR_hip_joint" 
+    - "FR_thigh_joint" 
+    - "FR_calfjointr"
+    # ===== Front Left =====
+    - "FL_hipjointr"
+    - "FL_thighjointr"
+    - "FL_calfjointr"
+    # ===== Rear Right =====
+    - "RR_hip_joint" 
+    - "RR_thigh_joint" 
+    - "RR_calfjointr"
+    # ===== Rear Left =====
+    - "RL_hip_joint" 
+    - "RL_thigh_joint" 
+    - "RL_calfjointr"
+
+  init_state:
+    # target angles [rad] when action = 0.0
+    default_joint_angle:
+      # ===== Front Right =====
+      FR_hip_joint: -0.1
+      FR_thigh_joint: 0.8
+      FR_calf_joint: -1.5
+      # ===== Front Left =====
+      FL_hip_joint: 0.1
+      FL_thigh_joint: 0.8
+      FL_calf_joint: -1.5
+      # ===== Rear Right =====
+      RR_hip_joint: -0.1
+      RR_thigh_joint: 1.0
+      RR_calf_joint: -1.5
+      # ===== Rear Left =====
+      RL_hip_joint: 0.1
+      RL_thigh_joint: 1.0
+      RL_calf_joint: -1.5
+    init_base_height: 0.35
+    init_commands: [0.0, 0.0, 0.0]
+
+  control:
+    # PD Drive parameters:
+    stiffness: 40.0
+    damping: 1.0
+    action_scale: 0.25
+    decimation: 20  # in MuJoCo, single timestep is set to be 0.001s
+    torque_limit: 33.5
+    gravity: -9.81
+
+  normalization:
+    clip_scales:
+      clip_obs: 100.
+      clip_action: 100.
+    obs_scales:
+      lin_vel: 2.0
+      ang_vel: 0.25
+      dof_pos: 1.0
+      dof_vel: 0.05
+    hip_scales:
+      hip_scale_reduction: 1.0  # HIMLoco
+      hip_scale_reduction_indices: [0, 3, 6, 9]
+
+  size:
+    num_joint: 12
+    num_action: 12
+    num_obs: 45
+    num_user_cmd: 3
+    obs_history_ids: [5, 4, 3, 2, 1, 0]  # [-5, -4, -3, -2, -1, current]
+    # obs_history_ids: [0, 1, 2, 3, 4, 5]  # [-5, -4, -3, -2, -1, current]
+
+  noise:
+    add_noise: 0  # 1: True  0: False
+    noise_scales:
+      noise_level: 1.0  # scales other values
+      dof_pos: 0.01
+      dof_vel: 1.5
+      lin_vel: 0.1
+      ang_vel: 0.2
+      gravity: 0.05
+

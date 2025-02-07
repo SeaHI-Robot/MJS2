@@ -26,11 +26,32 @@
 - Editting `.yaml` files in cfg directory is always your first choice during sim2sim testing.
 - Integrated with a keyboard command control functionality through `pynput`.
 
+## 📁 Structure
+```
+├── cfg
+│   ├── TRON1.yaml
+│   └── A1.yaml
+├── policy
+│   ├── TRON1
+│   │   └ ...
+│   └── A1
+│       └ ...
+├── resources
+│   ├── TRON1
+│   └── A1
+└── scripts
+    ├── TRON1
+    │   ├── sim2sim.py
+    │   └── utils.py
+    └── A1
+        ├── sim2sim.py
+        └── utils.py
+```
 
 ## 🤖 Adding New Robot
 1. Create a folder `<your_robot_name>` in `./resources/<your_robot_name>/` containing your robot mjcf description files.
 2. Put your policy files into `./policy/<your_robot_name>/`
 3. Implement a new `./cfg/<your_robot_name>.yaml` file.
-4. Edit`./sim2sim.py` and `./utils.py` according to your demands.
+4. Implement`./scripts/<your_robot_name>/sim2sim.py` and `./scripts/<your_robot_name>/utils.py` according to your demands.
 
 <br>

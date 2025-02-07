@@ -1,0 +1,51 @@
+<mujoco model="a1 scene">
+  <include file="a1_new.xml"/>
+  <include file="./common/world_axes.xml"/>
+  <option timestep="0.001"/>
+
+  <!-- <statistic center="0 0 0.1" extent="0.8"/> -->
+
+  <default>
+    <light castshadow="false" diffuse="1 1 1" />
+  </default>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <scale com="0.2" forcewidth="0.05" contactwidth="0.10" contactheight="0.04"/>
+    <rgba com="0.502 1.0 0 0.5" contactpoint="1.0 1.0 0.6 0.4" contactforce="0.2 0.98 0.2 0.8" haze="0.5 0.5 0.5 1" />
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture name="skybox" type="skybox" builtin="gradient" rgb1="1 1 1" rgb2="0 0 0" width="800" height="800" mark="random" markrgb="1 1 1"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.6 0.6" rgb2="0.5 0.5 0.5" markrgb="0.8 0.8 0.8" width="800" height="800" />
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
+    <hfield name="rough_terrain_1" size="2.0 2.0 0.2 0.1" file="rough_terrain_1.png"/>
+    <hfield name="rough_terrain_2" size="2.0 2.0 0.02 0.1" file="rough_terrain_2.png"/>
+    <hfield name="rough_terrain_3" size="2.0 2.0 0.02 0.1" file="rough_terrain_3.png"/>
+    <hfield name="unitree_terrain" size="2.0 2.0 0.15 0.1" file="unitree_terrain.png" />
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 20" dir="0 0 -1" directional="true"/>
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+
+    <body name="staircase" pos="2.2 0 0.05" euler="0 0 0">
+      <geom type="box" size="0.2 2 0.05" pos="0.3 0 0.0" rgba="0.5 0.5 0.5 1"/>
+      <geom type="box" size="0.2 2 0.05" pos="0.6 0 0.1" rgba="0.5 0.5 0.5 1"/>
+      <geom type="box" size="0.2 2 0.05" pos="0.9 0 0.2" rgba="0.5 0.5 0.5 1"/>
+      <geom type="box" size="0.2 2 0.05" pos="1.2 0 0.3" rgba="0.5 0.5 0.5 1"/>
+      <geom type="box" size="0.2 2 0.05" pos="1.5 0 0.4" rgba="0.5 0.5 0.5 1"/>
+      <geom type="box" size="0.2 2 0.05" pos="1.8 0 0.5" rgba="0.5 0.5 0.5 1"/>
+      <geom type="box" size="0.2 2 0.05" pos="2.1 0 0.6" rgba="0.5 0.5 0.5 1"/>
+    </body>
+
+    <body name="special_terrain" pos="6.5 0 0" euler="0 0 0">
+        <geom name="r_terrain_1" pos="0.0 0.0 0.0" type="hfield" hfield="rough_terrain_1" rgba="0.5 0.5 0.5 1" condim="3"/>
+        <geom name="r_terrain_2" pos="4.0 0.0 0.0" type="hfield" hfield="rough_terrain_2" rgba="0.5 0.5 0.5 1" condim="3"/>
+        <geom name="r_terrain_3" pos="8.0 0.0 0.05" type="hfield" hfield="rough_terrain_3" rgba="0.5 0.5 0.5 1" condim="3"/>
+        <geom name="u_terrain" pos="12.0 0.0 0.0" type="hfield" hfield="unitree_terrain" rgba="0.5 0.5 0.5 1" condim="3"/>
+    </body>
+
+  </worldbody>
+</mujoco>

@@ -3,6 +3,7 @@ TRON1:
     uneven_task: "policy_uneven.pt"
 
   joint_names:
+    # not used, just help to remind the joint sequence
     - "abad_L_Joint"
     - "hip_L_Joint"
     - "knee_L_Joint"
@@ -28,9 +29,9 @@ TRON1:
     stiffness: 40.0
     damping: 1.5
     action_scale: 0.5
-    decimation: 10
+    decimation: 20  # in MuJoCo, single timestep is set to be 0.001s
     torque_limit: 60
-    gravity: 9.81
+    gravity: -9.81
 
   normalization:
     clip_scales:
@@ -48,10 +49,12 @@ TRON1:
     num_obs: 27
     num_user_cmd: 3
 
-  stand_mode:
-    stand_duration: 1.0
-
-  imu_orientation_offset:
-    roll: 0.0
-    pitch: 0.0
-    yaw: 0.0
+  noise:
+    add_noise: 1  # 1: True  0: False
+    noise_scales:
+      noise_level: 1.0  # scales other values
+      dof_pos: 0.01
+      dof_vel: 1.5
+      lin_vel: 0.1
+      ang_vel: 0.2
+      gravity: 0.05

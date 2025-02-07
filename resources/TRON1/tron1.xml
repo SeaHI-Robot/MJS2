@@ -80,16 +80,15 @@
     </actuator>
 
     <sensor>
-        <!-- <framequat name="imu_quat" objtype="site" objname="imu" noise="0.02" /> -->
         <framequat name="imu_quat" objtype="site" objname="imu" />
         <gyro name="gyro" site="imu"/>
         <accelerometer name="acc" site="imu"/>
-        <jointpos name="abad_L_Joint"    joint="abad_L_Joint" />
-        <jointpos name="hip_L_Joint"     joint="hip_L_Joint" />
-        <jointpos name="knee_L_Joint"    joint="knee_L_Joint" />
-        <jointpos name="abad_R_Joint"    joint="abad_R_Joint" />
-        <jointpos name="hip_R_Joint"     joint="hip_R_Joint" />
-        <jointpos name="knee_R_Joint"    joint="knee_R_Joint" />
+        <!-- <jointpos name="abad_L_Joint"    joint="abad_L_Joint" /> -->
+        <!-- <jointpos name="hip_L_Joint"     joint="hip_L_Joint" /> -->
+        <!-- <jointpos name="knee_L_Joint"    joint="knee_L_Joint" /> -->
+        <!-- <jointpos name="abad_R_Joint"    joint="abad_R_Joint" /> -->
+        <!-- <jointpos name="hip_R_Joint"     joint="hip_R_Joint" /> -->
+        <!-- <jointpos name="knee_R_Joint"    joint="knee_R_Joint" /> -->
     </sensor>
 
 </mujoco>
